@@ -3,56 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../fonts.css"></link>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="ingreso.css"></link>
     <title>Confirmación de ingreso</title>
     <link rel="icon" type="image/png" href="../images/icono.png">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-image: url('../images/wall.webp');
+            background-repeat: repeat;
+            background-size: auto;
+        }
+    </style>
 </head>
-<body>
-    <div class="container">
-        <img  class="img-titulo" src="../images/titulo.webp" alt="">
+<body class="bg-white w-screen h-screen overflow-hidden">
+    <div class="w-screen h-screen flex flex-col items-center justify-center">
+        <img class="h-1/3 mb-5" src="../images/titulo.webp" alt="Titulo">
 
-        <div id="lugar">
-            Está ingresando a:
-            <!-- <button id="bodega" onclick="Ingresar('bodega')">
-                Escuela
-            </button> -->
-            <button class="iglesia" onclick="Ingresar('iglesia')">
+        <div id="lugar" class="hidden flex-col items-center justify-center text-center">
+            <p class="text-2xl font-montserrat mb-5">Está ingresando a:</p>
+            <button id="botonIglesia" class="font-montserrat text-xl font-bold m-5 px-5 py-2 rounded-lg border-2 border-white bg-white text-blue-500 cursor-pointer shadow-md hover:shadow-lg">
                 Iglesia
             </button>
         </div>
 
-        <div id="veri">
-            <p>
+        <div id="veri" class="hidden flex-col items-center justify-center h-3/5 w-4/5 text-center">
+            <p class="text-2xl font-montserrat">
                 Verificando...
             </p>
         </div>
-        <div id="si">
-            <p>
+        <div id="si" class="hidden flex-col items-center justify-center h-3/5 w-4/5 text-center text-green-600">
+            <p class="text-2xl font-montserrat">
                 SI, está en la lista
             </p>
-
         </div>
         
-        <div id="no">
-            <p>
+        <div id="no" class="hidden flex-col items-center justify-center h-3/5 w-4/5 text-center text-red-600">
+            <p class="text-2xl font-montserrat">
                 NO, no está en la lista
             </p>
         </div>
         
-        <div id="info">
-            <p>
+        <div id="info" class="hidden flex-col items-center justify-center h-3/5 text-center">
+            <p class="text-lg font-montserrat mb-4 w-4/5">
                 Este ticket será habilitado únicamente durante el evento. 
-
             </p>
-            <p>
+            <p class="text-lg font-montserrat mb-4 w-4/5">
                 Ten en cuenta que por seguridad, una vez haya sido escaneado, no podrá volver a usarse.
             </p>
-
-            <p>
+            <p class="text-lg font-montserrat w-4/5">
                 ¡Estamos muy felices de compartir contigo este día!
             </p>
         </div>
