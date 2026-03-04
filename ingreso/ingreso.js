@@ -1,98 +1,107 @@
 
-  //Santificación
-  // const URLApp= 'https://script.google.com/macros/s/AKfycbyfKldB6V4g-Pz5eXaw8WwBrTqCe4ocuMEBCsVQR0T3tVgzbGOY7MirG5sHoULtVXTx/exec';
-  //Líderes
-  const URLApp= 'https://script.google.com/macros/s/AKfycbwR-tNcUVVhiOV24UphHCrq0mzDoihvedZ_UcZbDbQd5-rbrdr7tkr-zjheEdaDiG5Vgw/exec';
-  
-  // Importar función de utilidades
-  import { descifrarTexto } from '../utilidades/utilidades.js';
+// Importar funciones de utilidades
+import { descifrarTexto } from '../utilidades/utilidades.js';
+import { URL_APP, MODO_INGRESO, CLAVE_CIFRADO, FECHA_EVENTO } from '../utilidades/config.js';
+import { 
+  mostrarVerificando, 
+  mostrarBienvenida, 
+  mostrarNoEncontrado, 
+  mostrarLugar, 
+  mostrarInfo,
+  configurarBotonIglesia 
+} from '../utilidades/uiManager.js';
+
+// ==================== CONFIGURACIÓN ====================
 
 const params = new URLSearchParams(window.location.search);
-const idPersona = params.get("id");
-// const nombrePersona = params.get("nombre"); // Ya no se usa
-console.log(idPersona); // "ABC123"
-let SI = document.getElementById("si");
-let NO = document.getElementById("no");
-let Veri = document.getElementById("veri");
-let Info = document.getElementById("info");
-let Lugar = document.getElementById("lugar");
+const idPersona = params.get('id');
+const fechaActual = new Date();
 
+// ==================== FUNCIONES ====================
 
+/**
+ * Construye la URL de consulta a la API
+ * @param {string} id - ID desencriptado
+ * @param {string} lugar - Ubicación (iglesia, bodega, etc)
+ * @returns {string} URL completa para la consulta
+ */
+function construirUrlConsulta(id, lugar) {
+  const params = new URLSearchParams({
+    texto: id,
+    modo: MODO_INGRESO,
+    lugar: lugar,
+  });
+  return `${URL_APP}?${params.toString()}`;
+}
 
-const p = 20;
+/**
+ * Procesa la respuesta del servidor cuando se encuentra a la persona
+ * @param {Object} datos - Datos de la respuesta
+ * @param {string} lugar - Ubicación registrada
+ */
+function procesarEncontrado(datos, lugar) {
+  let yaRegistrado = false;
+  
+  if (lugar === 'iglesia' && datos.registradoIglesia) {
+    yaRegistrado = true;
+  } else if (lugar === 'bodega' && datos.registradoBodega) {
+    yaRegistrado = true;
+  }
+  
+  mostrarBienvenida(datos.genero, yaRegistrado);
+}
 
-async function Ingresar(lugar) {
-
-  Lugar.style.display = "none";
-  Veri.style.display = "flex";
-
-  const idDes = descifrarTexto(idPersona, p);
-
-  const modo = "ingreso";
-
-  const url =
-    URLApp +    "?texto=" +    encodeURIComponent(idDes) +    "&modo=" +    encodeURIComponent(modo) +    "&lugar=" +    encodeURIComponent(lugar);
-  const res = await fetch(url);
-  const data = await res.json();
-
-  if (data.encontrado) {
-    // console.log("Texto encontrado en la fila:", data.fila);
-    SI.style.display = "flex";
-    NO.style.display = "none";
-    Veri.style.display = "none";
-    Info.style.display = "none";
-
-    if (lugar == "bodega") {
-      if (data.registradoBodega) {
-        SI.innerHTML = "<p>Upss... <br> Parece que ya ingresó a EF. <br> ❌ </p>";
-      } else {
-        if(data.genero === "FEMENINO"){SI.innerHTML = "<p> Bienvenida <br> ✅ </p>";} 
-        else if(data.genero === "MASCULINO"){SI.innerHTML = "<p> Bienvenido <br> ✅ </p>";} 
-        else{SI.innerHTML = "<p> Bienvenido <br> ✅ </p>";} 
-      }
+/**
+ * Realiza la verificación de ingreso en la API
+ * @param {string} lugar - Ubicación (iglesia, bodega, etc)
+ */
+async function verificarEnAPI(lugar) {
+  try {
+    const idDesencriptado = descifrarTexto(idPersona, CLAVE_CIFRADO);
+    const url = construirUrlConsulta(idDesencriptado, lugar);
+    
+    const respuesta = await fetch(url);
+    const datos = await respuesta.json();
+    
+    if (datos.encontrado) {
+      console.log('Persona encontrada en fila:', datos.fila);
+      procesarEncontrado(datos, lugar);
+    } else {
+      mostrarNoEncontrado();
     }
-
-    if (lugar == "iglesia") {
-      if (data.registradoIglesia) {
-        SI.innerHTML =
-          "<p>Upss... <br> Parece que ya ingresó a la iglesia. <br> ❌ </p>";
-      } else {
-        if(data.genero === "FEMENINO"){SI.innerHTML = "<p> Bienvenida <br> ✅ </p>";} 
-        else if(data.genero === "MASCULINO"){SI.innerHTML = "<p> Bienvenido <br> ✅ </p>";} 
-        else{SI.innerHTML = "<p> Bienvenido <br> ✅ </p>";} 
-      }
-    }
-  } else {
-    SI.style.display = "none";
-    NO.style.display = "flex";
-    Veri.style.display = "none";
-    NO.innerHTML = "<p> No se encuentra en la lista." + "<br> ❌ </p>";
-    Info.style.display = "none";
+  } catch (error) {
+    console.error('Error al verificar ingreso:', error);
+    mostrarNoEncontrado();
   }
 }
 
+/**
+ * Maneja el flujo de ingreso del usuario
+ * @param {string} lugar - Ubicación seleccionada
+ */
+async function ingresarAlEvento(lugar) {
+  mostrarVerificando();
+  await verificarEnAPI(lugar);
+}
 
-document.addEventListener("DOMContentLoaded", () => {
-  const botonIglesia = document.getElementById('botonIglesia');
-  botonIglesia.addEventListener('click', () => Ingresar('iglesia'));
-});
-  iniciar();
-});
-
-function iniciar() {
-  if (Ahora < fechaObjetivo) {
-    SI.style.display = "none";
-    NO.style.display = "none";
-    Veri.style.display = "none";
-    Lugar.style.display = "none";
-    Info.style.display = "flex";
+/**
+ * Inicializa la aplicación según la fecha actual
+ */
+function inicializarApp() {
+  if (fechaActual < FECHA_EVENTO) {
+    // Evento aún no ha comenzado
+    mostrarInfo();
   } else {
-    SI.style.display = "none";
-    NO.style.display = "none";
-    Veri.style.display = "none";
-    Lugar.style.display = "flex";
-    Info.style.display = "none";
+    // Evento ha comenzado, permitir ingreso
+    mostrarLugar();
   }
 }
+
+// ==================== EVENT LISTENERS ====================
+
+document.addEventListener('DOMContentLoaded', () => {
+  inicializarApp();
+  configurarBotonIglesia(() => ingresarAlEvento('iglesia'));
+});
 
 
