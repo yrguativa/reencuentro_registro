@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../fonts.css"></link>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="ingreso.css"></link>
+    <title>Confirmación de ingreso</title>
+    <link rel="icon" type="image/png" href="../images/icono.png">
+</head>
+<body>
+    <div class="container">
+        <img  class="img-titulo" src="../images/titulo.webp" alt="">
+
+        <div id="lugar">
+            Está ingresando a:
+            <!-- <button id="bodega" onclick="Ingresar('bodega')">
+                Escuela
+            </button> -->
+            <button class="iglesia" onclick="Ingresar('iglesia')">
+                Iglesia
+            </button>
+        </div>
+
+        <div id="veri">
+            <p>
+                Verificando...
+            </p>
+        </div>
+        <div id="si">
+            <p>
+                SI, está en la lista
+            </p>
+
+        </div>
+        
+        <div id="no">
+            <p>
+                NO, no está en la lista
+            </p>
+        </div>
+        
+        <div id="info">
+            <p>
+                Este ticket será habilitado únicamente durante el evento. 
+
+            </p>
+            <p>
+                Ten en cuenta que por seguridad, una vez haya sido escaneado, no podrá volver a usarse.
+            </p>
+
+            <p>
+                ¡Estamos muy felices de compartir contigo este día!
+            </p>
+        </div>
+    </div>
+</body>
+
+
+
+<script src="ingreso.js" ></script>
+</html>

@@ -1,0 +1,128 @@
+:root {
+
+
+    --color-azul:#0478f8;
+  --color-blanco:#ffffff;
+  --font-montserrat:  "Montserrat", sans-serif;
+
+}
+
+body {
+  background-color: #fff;
+  margin: 0;
+  padding: 0;
+  background-image: url("../images/wall.webp");
+  background-repeat: repeat;
+  background-size: auto;
+  width: 100vw;
+  height: 100vh;
+  overflow-x: hidden  ;
+  font-family: var(--font-montserrat);
+
+}
+
+.container {
+    width: 100vw;
+    height: 100vh;
+    padding: 0%;
+    margin: 0%;
+    
+    position: absolute;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    justify-items: center;
+
+    .img-titulo {
+        height: 30%;
+        margin-bottom: 20px;
+    }
+
+    div{
+        
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        
+        text-align: center;
+        
+        align-items: center;
+        justify-content: center;
+        align-self: center;
+        justify-self: center;
+        
+        
+        height: 60vh;
+        width: 80vw;
+        /* border-radius: px; */
+        
+    }
+
+    p{
+
+        font-size: 2rem;
+        word-wrap: normal;
+        width: 70%;
+    }
+
+    
+
+    
+    #si, #no, #lugar, #veri{
+        display: none;
+        
+    }
+
+    #info{
+        display: none;
+    }
+
+
+    #no p{
+        color: rgb(163, 1, 1);
+    }
+
+
+    #info{
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 0;
+
+        p{
+            font-size: 1.3rem;
+            word-wrap: normal;
+            width: 70%;
+        }
+    }
+
+    #lugar{
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-family: var(--font-montserrat);
+
+        button{
+            font-family: var(--font-montserrat);
+            font-size: 1.8rem;
+            font-weight: bolder;
+            margin: 20px;
+            padding: 10px 20px;
+            border-radius: 10px;
+            border: 2px 2px var(--color-blanco);
+            background-color: var(--color-blanco);
+            color: var(--color-azul);
+            cursor: pointer;
+            box-shadow: 2px 2px 6px var(--color-azul);
+            /* text-shadow: -1px -1px 1px white; */
+
+
+        }
+    }
+
+
+}

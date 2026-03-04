@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="fonts.css">
+    </link>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="estilos.css">
+    </link>
+    <link rel="icon" type="image/png" href="./images/icono.png">
+    <title>Líderes MCIM</title>
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="invitacion-mensaje">
+            <div id="sec1">
+
+                <img id="logo" src="./images/logo.png" alt="">
+                <img id="noche" src="./images/titulo.webp" alt="">
+
+                <p> Por favor confirma tu asistencia para recibir el código de ingreso diligenciando los siguientes
+                    datos:</p>
+
+                <div class="invitacion-form">
+                    <label for="name">Nombre Completo:</label>
+                    <input type="text" id="name" name="name" required>
+
+                    <label for="id">Número de documento:</label>
+                    <input type="text" id="id" name="id" required>
+
+                    <button onclick="generarQR()">Continuar</button>
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+    <div id="modal">
+        <div id="modal-verificando">
+            <img class="titulo" src="./images/titulo.webp" alt="">
+            <h2>Verificando tus datos...</h2>
+        </div>
+
+        <div id="modal-content">
+            <img class="titulo" src="./images/titulo.webp" alt="">
+            <h2 id="modal-gracias"></h2>
+            <h2> Este es tu ticket de ingreso, no olvides presentarlo en la entrada.</h2>
+
+            <div id="preview">
+                <div id="qrcode"></div>
+                <div>
+                    <button id="downloadBtn">Descargar Ticket</button>
+                </div>
+            </div>
+
+            <div id="info-ticket">
+                <p>Te esperamos:</p>
+
+                <div id="info-ticket-detalles">
+                    <div id="fecha">
+                        <h3>MIERCOLES</h3>
+                        <!-- <p>Martes 3</p> -->
+                    </div>
+                    <div id="hora">
+                        <p>7:00</p>
+                        <p>p.m.</p>
+                    </div>
+                </div>
+            </div>
+
+            <p>Recuerda que este ticket es válido únicamente para tí.</p>
+
+        </div>
+
+
+        <div id="modal-noregistrado">
+            <img class="titulo" src="./images/titulo.webp" alt="">
+            <h2>No te encontramos en la lista de invitados.</h2>
+            <div>
+                Si fuiste invitado, verifica los datos ingresados o confirma con tu líder de 12.
+
+                <button onclick="cerrarModal()">
+                    Verificar
+                </button>
+            </div>
+        </div>
+    </div>
+    <!-- Librería QRCode.js (liviana, cliente) -->
+    <script src="index.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/gh/davidshimjs/qrcodejs/qrcode.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/davidshimjs/qrcodejs/qrcode.js"></script>
+    <script>qrcode.stringToBytes = qrcode.utf8StringToBytes</script>
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+
+</body>
+
+</html>

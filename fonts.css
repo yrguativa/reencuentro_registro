@@ -1,0 +1,79 @@
+
+@font-face {
+  font-family: 'CarlaSans'; /* El nombre con el que la llamarás */
+  src: url('./fonts/CarlaSansRegular.ttf') format('truetype'); /* Ruta al archivo .ttf */
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'CarlaSans'; /* El nombre con el que la llamarás */
+  src: url('./fonts/CarlaSansBold.ttf') format('truetype'); /* Ruta al archivo .ttf */
+  font-weight: bolder;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'CarlaSans'; /* El nombre con el que la llamarás */
+  src: url('./fonts/CarlaSansLight.ttf') format('truetype'); /* Ruta al archivo .ttf */
+  font-weight: lighter;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'CarlaSans'; /* El nombre con el que la llamarás */
+  src: url('./fonts/CarlaSansSemibold.ttf') format('truetype'); /* Ruta al archivo .ttf */
+  font-weight: bold;
+  font-style: normal;
+}
+
+
+
+/************************************************************************************/
+
+@font-face {
+  font-family: 'AbhayaLibre'; /* El nombre con el que la llamarás */
+  src: url('./fonts/AbhayaLibre-Regular.ttf') format('truetype'); /* Ruta al archivo .ttf */
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+@font-face {
+  font-family: 'AbhayaLibre'; /* El nombre con el que la llamarás */
+  src: url('./fonts/AbhayaLibre-Medium.ttf') format('truetype'); /* Ruta al archivo .ttf */
+  font-weight: medium;
+  font-style: normal;
+}
+
+
+@font-face {
+  font-family: 'AbhayaLibre'; /* El nombre con el que la llamarás */
+  src: url('./fonts/AbhayaLibre-Bold.ttf') format('truetype'); /* Ruta al archivo .ttf */
+  font-weight: bold;
+  font-style: normal;
+}
+
+
+@font-face {
+  font-family: 'AbhayaLibre'; /* El nombre con el que la llamarás */
+  src: url('./fonts/AbhayaLibre-SemiBold.ttf') format('truetype'); /* Ruta al archivo .ttf */
+  font-weight: semibold;
+  font-style: normal;
+}
+
+
+@font-face {
+  font-family: 'AbhayaLibre'; /* El nombre con el que la llamarás */
+  src: url('./fonts/AbhayaLibre-ExtraBold.ttf') format('truetype'); /* Ruta al archivo .ttf */
+  font-weight: bolder;
+  font-style: normal;
+}
+
+
+@font-face {
+  font-family: 'AbhayaLibre'; /* El nombre con el que la llamarás */
+  src: url('./fonts/AbhayaLibre-Rg.ttf') format('truetype'); /* Ruta al archivo .ttf */
+  font-weight: regular;
+  font-style: normal;
+}

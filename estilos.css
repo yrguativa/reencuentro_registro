@@ -1,0 +1,992 @@
+:root {
+  --color-azul: #0478f8;
+  --color-blanco: #ffffff;
+  --font-montserrat: "Montserrat", sans-serif;
+  --font-CarlaSans: "CarlaSans", sans-serif;
+
+  --color-texto: #ffffff;
+  --color-fondo: #06242d;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+  margin: 0;
+  padding: 0;
+  background-image: url("./images/wall.webp");
+  background-repeat: repeat;
+  background-size: auto;
+  width: 100vw;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+ul {
+  text-align: left;
+  display: inline-block;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  padding-left: 1.4rem;
+
+  list-style-type: "✔ ";
+}
+
+b {
+  font-weight: bold;
+}
+
+.cursiva {
+  font-weight: semibold;
+  font-size: larger;
+}
+
+button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  color: var(--color-azul);
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-family: var(--font-montserrat);
+  box-shadow: 1px 2px 3px rgba(191, 143, 55, 0.4);
+}
+
+.fade {
+  overflow-y: auto;
+
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black 10%,
+    black 90%,
+    transparent 100%
+  );
+
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black 10%,
+    black 90%,
+    transparent 100%
+  );
+}
+
+/* Pantalla PC*/
+@media (min-width: 1001px) {
+  p {
+    margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
+  }
+
+  .container {
+    width: 100vw;
+    height: 100vh;
+    padding: 0%;
+    margin: 0%;
+
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    justify-items: center;
+
+    /* overflow-y: hidden; */
+  }
+
+  .invitacion-mensaje {
+    width: 100vw;
+    height: 90%;
+    color: white;
+
+    display: block;
+
+    position: fixed;
+    overflow-y: scroll;
+    top: 5%;
+
+    text-align: center;
+    color: white;
+    font-family: var(--font-montserrat);
+
+    font-size: 22px;
+
+    justify-content: center;
+    align-items: center;
+    margin-inline: auto;
+    justify-items: center;
+
+    padding-bottom: 2rem;
+    padding-inline: 8rem;
+
+    #inicio,
+    #sec1 {
+      display: block;
+      align-content: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    #logo {
+      height: 10%;
+      display: flex;
+      align-self: center;
+      margin-inline: auto;
+      margin-bottom: 0.2rem;
+    }
+
+    #noche {
+      height: 45%;
+      display: flex;
+      align-self: center;
+      margin-inline: auto;
+      margin-bottom: 0.5rem;
+    }
+
+    #titulo-dress {
+      display: flex;
+      flex-direction: column;
+      align-self: center;
+      width: 25%;
+      justify-self: center;
+    }
+    #titulo-meet {
+      display: flex;
+      justify-self: center;
+      flex-direction: column;
+      align-self: center;
+      width: 20%;
+    }
+
+    .invitacion-form {
+      display: flex;
+      flex-direction: column;
+      color: black;
+      font-family: var(--font-montserrat);
+
+      padding-inline: 4.5rem;
+      margin-bottom: 1rem;
+
+      align-items: center;
+      justify-content: center;
+
+      label {
+        margin-bottom: 5px;
+        font-size: 17px;
+        font-weight: bold;
+        text-align: left;
+      }
+
+      input {
+        padding: 5px;
+        margin-bottom: 10px;
+        border: 1px solid var(--color-azul);
+        border-radius: 4px;
+        font-size: 16px;
+        font-family: var(--font-montserrat);
+        width: 500px;
+      }
+
+      button {
+        margin-bottom: 3.5rem;
+      }
+    }
+  }
+  #modal {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-montserrat);
+    font-weight: normal;
+    overflow: hidden;
+
+    #modal-content {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: #fefefe;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+      height: 90%;
+      border-radius: 8px;
+      text-align: center;
+      color: var(--color-azul);
+    }
+
+    #modal-noregistrado {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      background-color: #fefefe;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 60%;
+      height: 40%;
+      border-radius: 8px;
+      text-align: center;
+      color: var(--color-azul);
+    }
+
+    #modal-verificando {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      background-color: #fefefe;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 60%;
+      height: 40%;
+      border-radius: 8px;
+      text-align: center;
+      color: var(--color-azul);
+    }
+
+    .titulo {
+      display: flex;
+      align-self: center;
+
+      height: 20%;
+      width: auto;
+    }
+
+    h2 {
+      margin-top: 10px;
+      margin-bottom: 5px;
+      font-size: 18px;
+    }
+
+    #modal-gracias {
+      color: black;
+      font-weight: bold;
+      font-size: 22px;
+    }
+
+    #preview {
+      margin-top: 0px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    #qrcode {
+      padding: 8px;
+      background: #fff;
+      border: 1px solid #ddd;
+    }
+
+    #info-ticket {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+
+      #info-ticket-detalles {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        gap: 5px;
+        justify-content: center;
+        align-items: center;
+
+        #fecha {
+          border-right: var(--color-azul) 1px solid;
+          padding-right: 5px;
+          width: 40%;
+          h3 {
+            padding: 0%;
+            margin: 0%;
+            font-size: 2rem;
+          }
+
+          p {
+            padding: 0%;
+            margin: 0%;
+            font-size: 0.8rem;
+          }
+        }
+
+        #hora {
+          border-right: var(--color-azul) 1px solid;
+          padding-right: 5px;
+
+          p {
+            padding: 0%;
+            margin: 0%;
+            font-size: 1.5rem;
+          }
+        }
+
+        #dresscode {
+          width: 40%;
+          h3 {
+            padding: 0%;
+            margin: 0%;
+            font-size: 2rem;
+          }
+
+          p {
+            padding: 0%;
+            margin: 0%;
+            font-size: 0.8rem;
+          }
+        }
+      }
+    }
+
+    button {
+      margin-top: 12px;
+      padding: 8px 12px;
+      cursor: pointer;
+      border-radius: 4px;
+      box-shadow: 1px 2px 3px var(--color-azul);
+      border: none;
+      background: var(--color-azul);
+      color: #fff;
+      font-size: 16px;
+      font-family: var(--font-montserrat);
+      align-self: center;
+      justify-self: center;
+    }
+  }
+}
+
+/* Tablet */
+@media (min-width: 701px) and (max-width: 1000px) {
+  p {
+    margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
+  }
+
+  .frame {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    margin: 0px;
+    padding: 0px;
+  }
+
+  .container {
+    width: 100vw;
+    height: 100vh;
+    padding: 0%;
+    margin: 0%;
+
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    justify-items: center;
+
+    /* overflow-y: hidden; */
+  }
+
+  .invitacion-mensaje {
+    width: 100vw;
+    height: 90%;
+
+    display: block;
+
+    position: fixed;
+    overflow-y: scroll;
+    top: 5%;
+
+    text-align: center;
+    color: black;
+    font-family: var(--font-montserrat);
+
+    font-size: 18px;
+
+    justify-content: center;
+    align-items: center;
+    margin-inline: auto;
+    justify-items: center;
+
+    padding-bottom: 2rem;
+    padding-inline: 5rem;
+
+    #inicio,
+    #sec1 {
+      display: block;
+      align-content: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    #sec2 {
+      display: block;
+      flex-direction: column;
+      align-content: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    #logo {
+      height: 15%;
+      display: flex;
+      align-self: center;
+      margin-inline: auto;
+      margin-bottom: 1rem;
+    }
+
+    #noche {
+      width: 80%;
+      display: flex;
+      align-self: center;
+      margin-inline: auto;
+      margin-bottom: 2rem;
+    }
+
+    #titulo-dress {
+      display: flex;
+      flex-direction: column;
+      align-self: center;
+      width: 70%;
+      justify-self: center;
+    }
+    #titulo-meet {
+      display: flex;
+      justify-self: center;
+      flex-direction: column;
+      align-self: center;
+      width: 50%;
+    }
+
+    .invitacion-form {
+      display: flex;
+      flex-direction: column;
+      color: black;
+      font-family: var(--font-montserrat);
+
+      padding-inline: 2.5rem;
+      margin-bottom: 1rem;
+
+      label {
+        margin-bottom: 5px;
+        font-size: 17px;
+        font-weight: bold;
+        text-align: left;
+      }
+
+      input {
+        padding: 5px;
+        margin-bottom: 10px;
+        border: 1px solid var(--color-azul);
+        border-radius: 4px;
+        font-size: 16px;
+        font-family: var(--font-montserrat);
+      }
+
+      button {
+        margin-bottom: 3.5rem;
+      }
+    }
+  }
+
+  #modal {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-montserrat);
+    font-weight: normal;
+    overflow: hidden;
+
+    #modal-content {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: #fefefe;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+      height: 90%;
+      border-radius: 8px;
+      text-align: center;
+      color: var(--color-azul);
+    }
+
+    #modal-noregistrado {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      background-color: #fefefe;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 60%;
+      height: 40%;
+      border-radius: 8px;
+      text-align: center;
+      color: var(--color-azul);
+    }
+
+    #modal-verificando {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      background-color: #fefefe;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 60%;
+      height: 40%;
+      border-radius: 8px;
+      text-align: center;
+      color: var(--color-azul);
+    }
+
+    .titulo {
+      display: flex;
+      align-self: center;
+
+      height: 20%;
+      width: auto;
+    }
+
+    h2 {
+      margin-top: 10px;
+      margin-bottom: 5px;
+      font-size: 18px;
+    }
+
+    #modal-gracias {
+      color: black;
+      font-weight: bold;
+      font-size: 22px;
+    }
+
+    #preview {
+      margin-top: 0px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    #qrcode {
+      padding: 8px;
+      background: #fff;
+      border: 1px solid #ddd;
+    }
+
+    #info-ticket {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+
+      #info-ticket-detalles {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        gap: 5px;
+        justify-content: center;
+        align-items: center;
+
+        #fecha {
+          border-right: var(--color-azul) 1px solid;
+          padding-right: 5px;
+          width: 40%;
+          h3 {
+            padding: 0%;
+            margin: 0%;
+            font-size: 2rem;
+          }
+
+          p {
+            padding: 0%;
+            margin: 0%;
+            font-size: 0.8rem;
+          }
+        }
+
+        #hora {
+          border-right: var(--color-azul) 1px solid;
+          padding-right: 5px;
+
+          p {
+            padding: 0%;
+            margin: 0%;
+            font-size: 1.5rem;
+          }
+        }
+
+        #dresscode {
+          width: 40%;
+          h3 {
+            padding: 0%;
+            margin: 0%;
+            font-size: 2rem;
+          }
+
+          p {
+            padding: 0%;
+            margin: 0%;
+            font-size: 0.8rem;
+          }
+        }
+      }
+    }
+
+    button {
+      margin-top: 12px;
+      padding: 8px 12px;
+      cursor: pointer;
+      border-radius: 4px;
+      box-shadow: 1px 2px 3px var(--color-azul);
+      border: none;
+      background: var(--color-azul);
+      color: #fff;
+      font-size: 16px;
+      font-family: var(--font-montserrat);
+      align-self: center;
+      justify-self: center;
+    }
+  }
+}
+
+/* Pantalla CELULAR*/
+@media (max-width: 700px) {
+  p {
+    margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
+  }
+
+  .frame {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    margin: 0px;
+    padding: 0px;
+  }
+
+  .container {
+    width: 100vw;
+    height: 100vh;
+    padding: 0rem;
+    margin: 0rem;
+
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    justify-items: center;
+  }
+
+  .invitacion-mensaje {
+    width: 100vw;
+    height: 88%;
+
+    display: block;
+
+    position: fixed;
+    overflow-y: scroll;
+    top: 6%;
+
+    text-align: center;
+    color: black;
+    font-family: var(--font-montserrat);
+
+    font-size: 18px;
+
+    justify-content: center;
+    align-items: center;
+    margin-inline: auto;
+    justify-items: center;
+
+    padding-inline: 5rem;
+
+    #inicio,
+    #sec1 {
+      display: block;
+      align-content: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    #sec2 {
+      display: block;
+      flex-direction: column;
+      align-content: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    #logo {
+      height: 15%;
+      display: flex;
+      align-self: center;
+      margin-inline: auto;
+      margin-bottom: 1rem;
+    }
+
+    #noche {
+      width: 100%;
+      display: flex;
+      align-self: center;
+      margin-inline: auto;
+      margin-bottom: 2rem;
+    }
+
+    #titulo-dress {
+      display: flex;
+      flex-direction: column;
+      align-self: center;
+      width: 70%;
+      justify-self: center;
+    }
+    #titulo-meet {
+      display: flex;
+      justify-self: center;
+      flex-direction: column;
+      align-self: center;
+      width: 50%;
+    }
+
+    .invitacion-form {
+      display: flex;
+      flex-direction: column;
+      color: black;
+      font-family: var(--font-montserrat);
+
+      padding-inline: 1rem;
+      margin-bottom: 1rem;
+
+      label {
+        margin-bottom: 5px;
+        font-size: 17px;
+        font-weight: bold;
+        text-align: left;
+      }
+
+      input {
+        padding: 5px;
+        margin-bottom: 10px;
+        border: 1px solid var(--color-azul);
+        border-radius: 4px;
+        font-size: 16px;
+        font-family: var(--font-montserrat);
+      }
+
+      button {
+        margin-bottom: 3rem;
+      }
+    }
+  }
+
+  #modal {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-montserrat);
+    font-weight: normal;
+    overflow: hidden;
+
+    #modal-content {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: #fefefe;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+      height: 90%;
+      border-radius: 8px;
+      text-align: center;
+      color: var(--color-azul);
+    }
+
+    #modal-noregistrado {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      background-color: #fefefe;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 60%;
+      height: 40%;
+      border-radius: 8px;
+      text-align: center;
+      color: var(--color-azul);
+    }
+
+    #modal-verificando {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      background-color: #fefefe;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 60%;
+      height: 40%;
+      border-radius: 8px;
+      text-align: center;
+      color: var(--color-azul);
+    }
+
+    .titulo {
+      display: flex;
+      align-self: center;
+
+      height: 20%;
+      width: auto;
+    }
+
+    h2 {
+      margin-top: 10px;
+      margin-bottom: 5px;
+      font-size: 18px;
+    }
+
+    #modal-gracias {
+      color: black;
+      font-weight: bold;
+      font-size: 22px;
+    }
+
+    #preview {
+      margin-top: 0px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    #qrcode {
+      padding: 8px;
+      background: #fff;
+      border: 1px solid #ddd;
+    }
+
+    #info-ticket {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+
+      #info-ticket-detalles {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        gap: 5px;
+        justify-content: center;
+        align-items: center;
+
+        #fecha {
+          border-right: var(--color-azul) 1px solid;
+          padding-right: 5px;
+          width: 40%;
+          h3 {
+            padding: 0%;
+            margin: 0%;
+            font-size: 1rem;
+          }
+
+          p {
+            padding: 0%;
+            margin: 0%;
+            font-size: 0.8rem;
+          }
+        }
+
+        #hora {
+          border-right: var(--color-azul) 1px solid;
+          padding-right: 5px;
+
+          p {
+            padding: 0%;
+            margin: 0%;
+            font-size: 1.5rem;
+          }
+        }
+
+        #dresscode {
+          width: 40%;
+          h3 {
+            padding: 0%;
+            margin: 0%;
+            font-size: 2rem;
+          }
+
+          p {
+            padding: 0%;
+            margin: 0%;
+            font-size: 0.8rem;
+          }
+        }
+      }
+    }
+
+    button {
+      margin-top: 12px;
+      padding: 8px 12px;
+      cursor: pointer;
+      border-radius: 4px;
+      box-shadow: 1px 2px 3px var(--color-azul);
+      border: none;
+      background: var(--color-azul);
+      color: #fff;
+      font-size: 16px;
+      font-family: var(--font-montserrat);
+      align-self: center;
+      justify-self: center;
+    }
+  }
+}
