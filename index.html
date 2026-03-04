@@ -4,6 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- theme color for browser chrome / navigation bars -->
+    <meta name="theme-color" content="#012f3c">
+    <!-- iOS status bar style (black-translucent blends with page) -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- make app capable for full-screen on Android/iOS -->
+    <meta name="mobile-web-app-capable" content="yes">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
@@ -31,7 +37,7 @@
 
                 <div class="invitacion-form mt-6 text-left">
                     <label for="id" class="block text-sm font-medium text-gray-200 mt-4">Número de documento:</label>
-                    <input type="number" id="id" name="id" required
+                    <input type="number" id="id" name="id" required inputmode="numeric" pattern="[0-9]*"
                         class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
 
                     <button id="botonContinuar"
