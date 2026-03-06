@@ -1,12 +1,18 @@
-const URL_APP = 'https://script.google.com/macros/s/AKfycbwR-tNcUVVhiOV24UphHCrq0mzDoihvedZ_UcZbDbQd5-rbrdr7tkr-zjheEdaDiG5Vgw/exec'; // Líderes
+import { URL_APP } from './config.js';
 
 const MODO_CONSULTA = "consulta";
 const LUGAR_EVENTO = "casa";
 
 export async function consultaAsistente(identification) {
-    const urlConsulta = `${URL_APP}?identification=${encodeURIComponent(identification)}&modo=${encodeURIComponent(MODO_CONSULTA)}&lugar=${encodeURIComponent(LUGAR_EVENTO)}`;
+    const params = new URLSearchParams({
+        identification: identification,
+        modo: MODO_CONSULTA,
+        lugar: LUGAR_EVENTO
+    });
+
+    const urlConsulta = `${URL_APP}?${params.toString()}`;
     try {
-        const respuesta = await fetch(urlConsulta);
+        const respuesta = await fetch(urlConsulta, { method: 'GET', credentials: 'omit' });
         return await respuesta.json();
     } catch (error) {
         console.error("Error al verificar ingreso:", error);
