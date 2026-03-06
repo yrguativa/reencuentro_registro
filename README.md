@@ -56,13 +56,12 @@ reencuentro_registro/
 ### Configuración del Backend
 
 1. Crear una hoja de cálculo de Google Sheets con las siguientes hojas:
-   - `LIDERES Y NEHEMIAS`: Lista principal de invitados
-   - `UDLV`: Opcional, para otros grupos
-   - `OTROS`: Opcional, para categorías adicionales
+   - `Respuestas de formulario 1`: Lista principal de invitados. **Importante**: El nombre debe coincidir exactamente, o debe ser ajustado en el script `AppScript/funciones.gs`.
 
 2. Desplegar el script en `AppScript/codigo.gs` como una aplicación web:
    - Abrir Apps Script en Google
-   - Pegar el código de `codigo.gs`
+   - Crear dos archivos de script: `codigo.gs` y `funciones.gs`.
+   - Pegar el contenido de los archivos del repositorio en los archivos correspondientes de Apps Script.
    - Configurar el ID de la hoja de cálculo en `SPREADSHEET_ID`
    - Desplegar como aplicación web y obtener la URL
 
