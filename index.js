@@ -4,22 +4,15 @@ const ALTO_REAL = window.innerHeight;
 const TAMANO_QR = 120;
 const NIVEL_CORRECCION = 'H'; // Niveles: L, M, Q, H
 const CLAVE_CIFRADO = 20; // Clave para el cifrado César
-const MODO_CONSULTA = "consulta";
-const LUGAR_EVENTO = "casa";
+
 
 // URLs base y de aplicación
-// const URL_BASE = "http://192.168.1.13:5500"; // Desarrollo local
-// const URL_BASE = "https://invitacionesmcim.github.io/AsistenciaSantificacion"; // Santificación
-const URL_BASE = "https://invitacionesmcim.github.io/AsistenciaLideresMCIM"; // Líderes
-
-// const URL_APP = 'https://script.google.com/macros/s/AKfycbyfKldB6V4g-Pz5eXaw8WwBrTqCe4ocuMEBCsVQR0T3tVgzbGOY7MirG5sHoULtVXTx/exec'; // Santificación
-const URL_APP = 'https://script.google.com/macros/s/AKfycbwR-tNcUVVhiOV24UphHCrq0mzDoihvedZ_UcZbDbQd5-rbrdr7tkr-zjheEdaDiG5Vgw/exec'; // Líderes
+const URL_BASE = "https://yrguativa.github.io/reencuentro_registro/"; // Líderes
 
 // Importar funciones de utilidades
-import { cifrarTexto, descargarPNG, descargarDesdeURL } from './utilidades/utilidades.js';
-
+import { cifrarTexto, descargarPNG } from './utilidades/utilidades.js';
+import { consultaAsistente } from './utilidades/service.js';
 // Elementos del DOM
-const inputId = document.getElementById('id');
 const contenedorQR = document.getElementById('qrcode');
 const botonDescargar = document.getElementById('downloadBtn');
 const modal = document.getElementById('modal');
@@ -37,41 +30,46 @@ let instanciaQR = null; // Mantener instancia para regenerar el QR
  * Realiza una consulta a la API y muestra el modal correspondiente.
  * @param {string} texto - El ID a verificar.
  */
-async function verificarIngreso(texto) {
-  const urlConsulta = `${URL_APP}?texto=${encodeURIComponent(texto)}&modo=${encodeURIComponent(MODO_CONSULTA)}&lugar=${encodeURIComponent(LUGAR_EVENTO)}`;
+async function verificarIngreso(identification) {
   try {
-    const respuesta = await fetch(urlConsulta);
-    const datos = await respuesta.json();
-
+    const datos = await consultaAsistente(identification);
     if (datos.encontrado) {
       console.log("Texto encontrado en la fila:", datos.fila);
+      document.getElementById('modal-gracias').innerHTML('Bienvenido, ' + datos.name);
       contenidoModal.classList.remove("hidden");
       modalNoRegistrado.classList.add("hidden");
     } else {
       contenidoModal.classList.add("hidden");
       modalNoRegistrado.classList.remove("hidden");
     }
+
+    return datos.encontrado || false;
   } catch (error) {
     console.error("Error al verificar ingreso:", error);
     // Manejar error, quizás mostrar un modal de error
+    return false;
   }
-
-  modalVerificando.classList.add("hidden");
+  finally {
+    modalVerificando.classList.add("hidden");
+  }
 }
 
 /**
  * Genera el código QR basado en el ID y nombre ingresados.
  * Cifra el ID, crea la URL de redirección y muestra el modal con el QR.
  */
-function generarQR() {
-  const textoId = inputId.value.replace(/[ .,]/g, "") || '';
+async function generarQR() {
+  const textoId = document.getElementById('id').value.replace(/[ .,]/g, "") || '';
   if (textoId.length === 0) {
     return; // No generar si no hay ID
   }
 
   // Verificar ingreso antes de generar QR
-  verificarIngreso(textoId);
+  const encontrado = await verificarIngreso(textoId);
 
+  if (!encontrado) {
+    return; // No generar QR si el ID no está registrado
+  }
   // Deshabilitar botón de descarga temporalmente
   botonDescargar.disabled = true;
 
