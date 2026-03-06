@@ -37,7 +37,7 @@
 
                 <div class="invitacion-form mt-6 text-left">
                     <label for="id" class="block text-sm font-medium text-gray-200 mt-4">Número de documento:</label>
-                    <input type="number" id="id" name="id" required inputmode="numeric" pattern="[0-9]*"
+                    <input type="number" id="id" name="id" value="1051066918" required inputmode="numeric" pattern="[0-9]*"
                         class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
 
                     <button id="botonContinuar"
@@ -48,14 +48,15 @@
         </div>
     </div>
 
-    <div id="modal" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center p-4 hidden text-gray-50">
+    <div id="modal" class="hidden fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center p-4 text-gray-50">
         <div id="modal-verificando" class="bg-cyan-950 p-8 rounded-lg shadow-2xl text-center max-w-sm w-full flex flex-col items-center">
             <img class="titulo h-20 w-auto" src="./images/titulo.png" alt="Reencuentro">
             <h2 class="text-xl text-gray-200 font-bold mt-4">Verificando tus datos...</h2>
         </div>
 
-        <div id="modal-content" class="bg-cyan-950 p-6 rounded-lg shadow-2xl text-center max-w-sm w-full hidden flex flex-col items-center">
+        <div id="modal-content" class="hidden bg-cyan-950 p-6 rounded-lg shadow-2xl text-center max-w-sm w-full flex flex-col items-center">
             <img class="titulo h-40 w-auto" src="./images/titulo.png" alt="Reencuentro">
+            <h2 class="text-xl font-bold mt-4">¡Gracias por confirmar tu asistencia!</h2>
             <h2 id="modal-gracias" class="text-xl font-bold mt-4"></h2>
             <h2 class="mt-2 text-sm text-gray-200"> Este es tu ticket de ingreso, no olvides presentarlo en la entrada.</h2>
 
