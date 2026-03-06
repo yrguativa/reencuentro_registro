@@ -12,7 +12,7 @@ export async function consultaAsistente(identification) {
 
     const urlConsulta = `${URL_APP}?${params.toString()}`;
     try {
-        const respuesta = await fetch(urlConsulta, { method: 'GET', credentials: 'omit' });
+        const respuesta = await fetch(urlConsulta, { method: 'GET', redirect: 'follow' });
         return await respuesta.json();
     } catch (error) {
         console.error("Error al verificar ingreso:", error);
