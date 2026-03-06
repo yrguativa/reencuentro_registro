@@ -3,7 +3,7 @@
  */
 
 // URLs de aplicaciones externas
-export const URL_APP = 'https://script.google.com/macros/s/AKfycbwR-tNcUVVhiOV24UphHCrq0mzDoihvedZ_UcZbDbQd5-rbrdr7tkr-zjheEdaDiG5Vgw/exec';
+export const URL_APP = 'https://script.google.com/macros/s/AKfycbzJ76JS6fvZKuDpzMIaKyUCkVHwevhzk3Q6nDc9PD3DPyrjUkRkSqPtQ5O3-me5xzHKhA/exec';
 
 // Parámetros de consulta
 export const MODO_INGRESO = 'ingreso';
