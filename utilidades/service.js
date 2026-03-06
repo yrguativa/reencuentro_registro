@@ -4,7 +4,7 @@ const MODO_CONSULTA = "consulta";
 const LUGAR_EVENTO = "casa";
 
 export async function consultaAsistente(identification) {
-    const urlConsulta = `${URL_APP}?1051066918=${encodeURIComponent(identification)}&modo=${encodeURIComponent(MODO_CONSULTA)}&lugar=${encodeURIComponent(LUGAR_EVENTO)}`;
+    const urlConsulta = `${URL_APP}?identification=${encodeURIComponent(identification)}&modo=${encodeURIComponent(MODO_CONSULTA)}&lugar=${encodeURIComponent(LUGAR_EVENTO)}`;
     try {
         const respuesta = await fetch(urlConsulta);
         return await respuesta.json();
