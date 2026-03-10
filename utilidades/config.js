@@ -12,4 +12,4 @@ export const MODO_INGRESO = 'ingreso';
 export const CLAVE_CIFRADO = 20;
 
 // Fechas de eventos
-export const FECHA_EVENTO = new Date('2025-12-18T18:20:00'); // Fecha real del evento
+export const FECHA_EVENTO = new Date('2025-03-19T18:20:00'); // Fecha real del evento

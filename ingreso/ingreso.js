@@ -20,21 +20,6 @@ const fechaActual = new Date();
 // ==================== FUNCIONES ====================
 
 /**
- * Construye la URL de consulta a la API
- * @param {string} id - ID desencriptado
- * @param {string} lugar - Ubicación (iglesia, bodega, etc)
- * @returns {string} URL completa para la consulta
- */
-function construirUrlConsulta(id, lugar) {
-  const params = new URLSearchParams({
-    texto: id,
-    modo: MODO_INGRESO,
-    lugar: lugar,
-  });
-  return `${URL_APP}?${params.toString()}`;
-}
-
-/**
  * Procesa la respuesta del servidor cuando se encuentra a la persona
  * @param {Object} datos - Datos de la respuesta
  * @param {string} lugar - Ubicación registrada
@@ -58,9 +43,19 @@ function procesarEncontrado(datos, lugar) {
 async function verificarEnAPI(lugar) {
   try {
     const idDesencriptado = descifrarTexto(idPersona, CLAVE_CIFRADO);
-    const url = construirUrlConsulta(idDesencriptado, lugar);
     
-    const respuesta = await fetch(url);
+    console.log("🚀 ~ verificarEnAPI ~ URL_APP:", URL_APP)
+    const respuesta = await fetch(URL_APP, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        texto: idDesencriptado,
+        lugar: lugar,
+      }),
+    });
+
     const datos = await respuesta.json();
     
     if (datos.encontrado) {
@@ -94,6 +89,7 @@ function inicializarApp() {
   } else {
     // Evento ha comenzado, permitir ingreso
     mostrarLugar();
+    console.log("🚀 ~ inicializarApp ~ mostrarLugar:")
   }
 }
 
@@ -103,5 +99,3 @@ document.addEventListener('DOMContentLoaded', () => {
   inicializarApp();
   configurarBotonIglesia(() => ingresarAlEvento('iglesia'));
 });
-
-

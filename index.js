@@ -1,17 +1,16 @@
+// Importar funciones de utilidades
+import { cifrarTexto, descargarPNG } from './utilidades/utilidades.js';
+import { consultaAsistente } from './utilidades/service.js';
+
 // Constantes de configuración
-const ANCHO_REAL = window.innerWidth;
-const ALTO_REAL = window.innerHeight;
 const TAMANO_QR = 120;
 const NIVEL_CORRECCION = 'H'; // Niveles: L, M, Q, H
 const CLAVE_CIFRADO = 20; // Clave para el cifrado César
 
-
 // URLs base y de aplicación
 const URL_BASE = "https://yrguativa.github.io/reencuentro_registro/"; // Líderes
 
-// Importar funciones de utilidades
-import { cifrarTexto, descargarPNG } from './utilidades/utilidades.js';
-import { consultaAsistente } from './utilidades/service.js';
+
 // Elementos del DOM
 const contenedorQR = document.getElementById('qrcode');
 const botonDescargar = document.getElementById('downloadBtn');
@@ -65,7 +64,7 @@ function generarQR() {
       const textoCifrado = cifrarTexto(textoId, CLAVE_CIFRADO);
 
       // Construir URL de redirección
-      const urlRedireccion = `${URL_BASE}/ingreso/ingreso.html?id=${textoCifrado}`;
+      const urlRedireccion = `${URL_BASE}/ingreso/index.html?id=${textoCifrado}`;
 
       // Opciones para generar el QR
       const opcionesQR = {
